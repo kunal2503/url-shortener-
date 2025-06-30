@@ -9,6 +9,7 @@ const urlSchema = new Schema({
     shortUrl : {
         type: String,
         required  : true,
+        unique : true,
     },
     createdAt: {
         type: Date,
@@ -16,6 +17,6 @@ const urlSchema = new Schema({
     },
 } );
 
-const UrlModel = mongoose.model("Url", urlSchema);
+const Url = mongoose.model("Url", urlSchema);
 
-module.exports = UrlModel;
+module.exports = Url;
