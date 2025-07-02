@@ -9,7 +9,9 @@ async function connect() {
   await mongoose.connect("mongodb://localhost:27017/UrlShortner");
 }
 
-app.use(cors());
+app.use(cors({
+  origin: "http://localhost:5173", // Adjust this to your frontend URL
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

@@ -15,6 +15,10 @@ const urlSchema = new Schema({
         type: Date,
         default: Date.now,
     },
+    click : {
+        type : Number,
+        default : 0,
+    },
 } );
 
 const Url = mongoose.model("Url", urlSchema);
