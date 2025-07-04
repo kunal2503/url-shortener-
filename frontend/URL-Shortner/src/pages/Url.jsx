@@ -11,6 +11,8 @@ const Url = () => {
   const [shortUrl,setShortUrl] = useState("") 
   const [originalUrl, setOriginalUrl] = useState("");
   const [toast, setToast] = useState({message: "",type: ""});
+  
+  const user = JSON.parse(localStorage.getItem("user"));
 
 
 
@@ -21,7 +23,7 @@ const Url = () => {
 
   const handleSubmit = async(event) =>{
     event.preventDefault();
-
+    
     if(inputUrl.originalUrl.trim() === ""){
       setToast({message: "Please enter a valid URL", type: "error"});
       return;
@@ -71,8 +73,9 @@ const handelRedirectUrl = async(event) => {
       setToast({message:error?.response?.data.message||"Failed to copy:", type: "error"});
     }
   }
+  
   return (
-   <div className="bg-gray-950  flex items-center mt-10 flex-col gap-8 text-white min-h-screen px-4">
+      <div className="bg-gray-950  flex items-center mt-10 flex-col gap-8 text-white min-h-screen px-4">
   {/* Header */}
   {toast.message && <Toast type={toast.type} message={toast.message} onClose={handleToastClose} />}
 
@@ -91,11 +94,11 @@ const handelRedirectUrl = async(event) => {
       onChange={handleInputChange}
       placeholder="Paste your URL here..."
       className="bg-gray-800 text-white placeholder-gray-400 rounded-lg px-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
-    />
+      />
     <button
       onClick={handleSubmit}
       className="bg-indigo-600 hover:bg-indigo-700 transition px-5 py-3 rounded-lg text-white font-semibold flex items-center gap-2"
-    >
+      >
       Shorten <FaArrowRight />
     </button>
   </div>
@@ -109,7 +112,7 @@ const handelRedirectUrl = async(event) => {
         <button
           onClick={handleCopy}
           className="bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium transition"
-        >
+          >
           Copy
         </button>
       </div>
@@ -117,7 +120,8 @@ const handelRedirectUrl = async(event) => {
   )}
 </div>
 
-  );
+) 
+
 };
 
 export default Url;

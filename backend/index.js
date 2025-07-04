@@ -1,7 +1,10 @@
+require('dotenv').config()
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const urlRoutes = require("./routes/urlRoutes");
+const authRoutes = require("./routes/authRoutes");
+
 
 const app = express();
 
@@ -17,6 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes 
 app.use("/api",urlRoutes);
+app.use("/auth",authRoutes);
 
 connect()
   .then(() => {

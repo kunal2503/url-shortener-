@@ -8,7 +8,7 @@ const Toast = ({ type = "", message, onClose }) => {
     }, 2000);
     return () => clearTimeout(timer);
   }, [onClose]);
-console.log(type)
+// console.log(type)
   const bgColor = type === "success" ? "bg-green-500" :  "bg-red-500";
 
 
